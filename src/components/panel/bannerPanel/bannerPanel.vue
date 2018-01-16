@@ -1,21 +1,21 @@
 <template>
     <div class="tab-item">
-		<div class="demo-input-suffix" v-if="pdata.seat.x">
+		<div class="demo-input-suffix">
 		  <label class="el-name" for="">横坐标：</label>
 		  <el-input-number v-model.number="pdata.seat.x" :min="0" label="横坐标" size="mini"></el-input-number>
 		</div>
 
-		<div class="demo-input-suffix" v-if="pdata.seat.y">
+		<div class="demo-input-suffix">
 		  <label class="el-name" for="">纵坐标：</label>
 		  <el-input-number v-model.number="pdata.seat.y" :min="0" label="纵坐标" size="mini"></el-input-number>
 		</div>
 
-		<div class="demo-input-suffix" v-if="pdata.seat.w">
+		<div class="demo-input-suffix">
 		  <label class="el-name" for="">宽：</label>
 		  <el-input-number v-model.number="pdata.seat.w" :min="0" label="宽" size="mini"></el-input-number>
 		</div>
 
-		<div class="demo-input-suffix" v-if="pdata.seat.h">
+		<div class="demo-input-suffix">
 		  <label class="el-name" for="">高：</label>
 		  <el-input-number v-model.number="pdata.seat.h" :min="0" label="高" size="mini"></el-input-number>
 		</div>
