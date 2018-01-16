@@ -1,6 +1,6 @@
 <template>
   <el-container>
-      <headerItem :menu="navData" @delCot="delCom" @delComp="delComponent" @addCom="addTypeCom"></headerItem> 
+      <headerItem :menu="navData" @delCot="delCom" @delComp="delComponent" @addCom="addTypeCom" @save="saveData" @see="seeHtml" @outHtml="outJson"></headerItem> 
       <el-container class="edit-container">
         <el-main>
           <div class="edit-item">
@@ -52,7 +52,7 @@ export default {
   name: 'EditItem',
   data () {
     return {
-      comIndex: 0,
+      comIndex: -1,
       verText: 'xSpecial Version 2.0',
       navData: [
         {
@@ -67,14 +67,6 @@ export default {
           index: '3',
           name: '轮播图',
           type: 'banner'
-        }, {
-          index: '4',
-          name: '图片',
-          type: 'picture'
-        }, {
-          index: '5',
-          name: '介绍',
-          type: 'intro'
         }, {
           index: '6',
           name: '报名',
@@ -122,8 +114,8 @@ export default {
           isActive: true,
           attrs: {
             width:'1000px',
-            height:'150px',
-            background:'//topic.xcar.com.cn/201709/rctgh/images/rc_02.jpg'
+            height:'300px',
+            background:'//p02czd3xc.bkt.clouddn.com/wbg.jpg'
           },
           coms: []
         }
@@ -148,24 +140,31 @@ export default {
           isActive:true,
           attrs: {
             width:'1000px',
-            height:'150px',
-            background:'//topic.xcar.com.cn/201709/rctgh/images/rc_02.jpg'
+            height:'300px',
+            background:'//p02czd3xc.bkt.clouddn.com/wbg.jpg'
           },
           coms:[]
         })
+        this.panelData = {
+            'isShow':true,
+            'data':{
+              'ctype': 'container',
+              'css': this.containerList[this.getActiveContainerIndex()].attrs
+            }
+          }
 
       } else {
         //判断编辑区域是否有容器组件
         if (this.getActiveContainerIndex() === -1) {
 
-          this.$message.error('错了哦，请先添加容器组件');
+          this.$notify.error('错了哦，请先添加容器组件');
 
         } else {
 
           let isTypeJson = defaultData.getByType(type)
 
           if(!isTypeJson) {
-            this.$message({
+            this.$notify({
               message: '暂无此组件，敬请期待！',
               type: 'warning'
             })
@@ -245,17 +244,22 @@ export default {
     },
     delCom () {
       if (this.getActiveContainerIndex() ==-1) {
-        this.$message.error('请选择要删除的容器')
+        this.$notify.error({
+            title: '提示',
+            message: '请选择要删除的容器！',
+            position: 'bottom-right'
+          });
       } else {
         this.$delete(this.containerList,this.getActiveContainerIndex())
 
         this.containerList.forEach((item, index) => {
           item.id = 'container_' + index
         })
-
-        this.$message({
+        
+        this.$notify({
           message: '容器删除成功！',
-          type: 'success'
+          type: 'success',
+          position: 'bottom-right'
         })
 
       }
@@ -263,22 +267,61 @@ export default {
     },
     delComponent () {
       if (this.getActiveContainerIndex() ==-1) {
-        this.$message.error('请先选择要删除组件所在的容器！')
+        this.$notify.error({
+            title: '提示',
+            message: '请先选择要删除组件所在的容器！',
+            position: 'bottom-right'
+          });
       } else {
-        
-        let co = this.getActiveContainer()
+        if (this.comIndex == -1) {
+          this.$notify.error({
+            title: '提示',
+            message: '请先选择要删除的组件！',
+            position: 'bottom-right'
+          });
 
-        co.coms.splice(this.comIndex,1)
-        this.proxy.active = false
+        } else {
 
-        this.$message({
-          message: '组件删除成功！',
-          type: 'success'
-        })
+          let co = this.getActiveContainer()
+          co.coms.splice(this.comIndex,1)
+          this.proxy.active = false
+          this.proxy.w =0 
+          this.proxy.h =0 
+          this.proxy.x =0 
+          this.proxy.y =0 
+          this.comIndex = -1
+          this.$notify({
+            message: '组件删除成功！',
+            type: 'success',
+            position: 'bottom-right'
+          })
+          
+        }
 
       }
-      
-    }
+     
+    },
+    saveData () {
+      this.$notify.info({
+        title: '提示',
+        message: '暂无此功能，需要后端配合联调接口！',
+        position: 'bottom-right'
+      });
+    },
+    seeHtml () {
+      this.$notify.info({
+        title: '提示',
+        message: '暂无此功能，需要后端配合联调接口！',
+        position: 'bottom-right'
+      });
+    },
+    outJson () {
+      this.$notify.info({
+        title: '提示',
+        message: '暂无此功能，需要后端配合联调接口！',
+        position: 'bottom-right'
+      });
+    },
   }
 }
 </script>

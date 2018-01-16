@@ -68,6 +68,7 @@
 	.nav-item h3 {
 		float:left;
 		margin: 0;
+		pointer-events:none;
 	}
 	.nav-item h3 img {
 		vertical-align: middle;

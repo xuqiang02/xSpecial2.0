@@ -4,7 +4,7 @@
           <el-col :span="2">
             <h3 class="logo-item"><a href="/"></a></h3>
           </el-col> 
-          <el-col :span="16" :offset="1">
+          <el-col :span="10" :offset="1">
             <el-menu
               :default-active="tabIndex"
               class="el-menu-demo"
@@ -15,11 +15,20 @@
               <el-menu-item v-for="item in menu" :index="item.index" :key="item.index" :type="item.type" @click="addContainer(item.type)">{{item.name}}</el-menu-item> 
             </el-menu>
           </el-col>
-          <el-col :span="5" class="btn-item">
-          	<el-button type="primary" @click="delCt" icon="el-icon-delete" size="mini">删除容器</el-button>
-			<el-button type="danger" @click="delCo" icon="el-icon-delete" size="mini">删除组件</el-button>
-			<!-- <el-button :plain="true" @click="save" size="mini">保存</el-button>
-			<el-button type="primary" :plain="true" @click="outHtml" size="mini">生成</el-button> -->
+          <el-col :span="11" class="btn-item">
+          	<el-col :span="11">
+	          	<el-button-group>
+		          	<el-button type="danger" @click="delCt" icon="el-icon-delete" size="mini">删除容器</el-button>
+					<el-button type="danger" @click="delCo" icon="el-icon-delete" size="mini">删除组件</el-button>
+				</el-button-group>
+			</el-col>
+			<el-col :span="8" :offset="4">
+				<el-button-group>
+					<el-button type="primary" icon="el-icon-success" size="mini" @click="save">保存</el-button>
+					<el-button type="success" icon="el-icon-view" size="mini" @click="see">预览</el-button>
+					<el-button type="warning" icon="el-icon-document" size="mini" @click="outHtml">发布</el-button>
+				</el-button-group>
+			</el-col>
           </el-col>
         </el-row>
 	</el-header>
@@ -71,16 +80,13 @@ export default {
 			this.$emit('delComp')
 		},
 		save () {
-	      this.$message({
-	        message: '恭喜你，这是一条成功消息',
-	        type: 'success'
-	      })
+	      this.$emit('save')
 	    },
 	    outHtml () {
-	      this.$message({
-	        message: '警告哦，这是一条警告消息',
-	        type: 'warning'
-	      })
+	      this.$emit('outHtml')
+	    },
+	    see () {
+	      this.$emit('see')
 	    }
 	}
 }

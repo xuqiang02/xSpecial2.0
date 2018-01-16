@@ -20,6 +20,11 @@
 		  <el-input-number v-model.number="pdata.seat.h" :min="0" label="高" size="mini"></el-input-number>
 		</div>
 
+		<div class="demo-input-suffix">
+		  <label class="el-name" for="">层级：</label>
+		  <el-input-number v-model.number="pdata.seat.z" label="层级" size="mini"></el-input-number>
+		</div>
+		
 		<div class="demo-input-suffix" >
 		  <label class="el-name" for="">图片数量：</label>
 		  <el-input

@@ -69,5 +69,6 @@
 		color: #000;
 	    margin: 0px 5px;
 	    text-decoration: none;
+	    pointer-events:none;
 	}
 </style>

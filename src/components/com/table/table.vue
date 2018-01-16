@@ -203,6 +203,9 @@
 	    height: 300px;
    		overflow-y: scroll;
 	}
+	.table-item table{
+		pointer-events:none;
+	}
 	.table-item table tr td {
 		color: #676767;
 		line-height: 36px;

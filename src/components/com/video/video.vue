@@ -60,4 +60,7 @@
 		width: 100%;
 		text-align: right;
 	}
+	.video-item iframe{
+		pointer-events:none;
+	}
 </style>

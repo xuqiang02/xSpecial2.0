@@ -1,10 +1,12 @@
 <template>
 	<div class="tab-item"  :style="[c.css,{'width':c.seat.w+'px','top':c.seat.y+'px','left':c.seat.x+'px','z-index':c.seat.z}]">
-	  <el-carousel :interval="4000" type="card" height="c.seat.w+'px'">
-	    <el-carousel-item v-for="item in c.bannerArr" :key="item.img">
-	      <h3><img v-bind:src="item.img" width="100%"></h3>
-	    </el-carousel-item>
-	  </el-carousel>
+		<div style="pointer-events:none;">
+		  <el-carousel :interval="4000" :autoplay="false" type="card" height="c.seat.w+'px'">
+		    <el-carousel-item v-for="item in c.bannerArr" :key="item.img">
+		      <h3><img v-bind:src="item.img" width="100%"></h3>
+		    </el-carousel-item>
+		  </el-carousel>
+		</div>
 	</div>
 </template>
 

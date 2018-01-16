@@ -1,5 +1,6 @@
 <template>
-	<div :style="[c.css,{width:c.seat.w+'px',height:c.seat.h+'px',top:c.seat.y+'px',left:c.seat.x+'px'}]" class="xfocus" @mouseover="stop()" @mouseout="autoplay()">
+	<div :style="[c.css,{width:c.seat.w+'px',height:c.seat.h+'px',top:c.seat.y+'px',left:c.seat.x+'px','z-index':c.seat.z}]" class="xfocus" @mouseover="stop()" @mouseout="autoplay()">
+    <div style="pointer-events:none;">
         <transition-group tag="ul" name='image'>
             <li v-for="(imgUrlItem,index) in c.imgUrl" :key="index" v-show="index===c.mark">
                 <a href="javascript:;"><img :src="imgUrlItem.img" alt="" :style="{width:c.seat.w+'px' , height:c.seat.h+'px'}" ></a>
@@ -12,6 +13,7 @@
 			<a href="javascipt:;" class="next" @click="next()"></a>
 			<a href="javascipt:;" class="left" @click="left()"></a>
 	    </div>
+    </div>
 	</div>
 </template>
 
@@ -32,15 +34,15 @@ defaultData.add({
   ctype: "banner",
   data: {
     seat: {
-      x: 1,
-      y: 1,
-      w: 600,
-      h: 360
+      'x': 1,
+      'y': 1,
+      'w': 600,
+      'h': 360,
+      'z':1
     },
     css: {
-      position: "absolute",
-      padding: "0 10px",
-      margin: "0",
+      'position': "absolute",
+      'margin': "0",
       "line-height": "20px",
       "box-sizing": "border-box",
       "font-size": "14px"

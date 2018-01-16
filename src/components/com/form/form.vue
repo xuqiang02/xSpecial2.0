@@ -122,6 +122,7 @@
 		width: 330px;
 		float: right;
 		display: inline;
+		pointer-events:none;
 	}
 
 	.form .item {
